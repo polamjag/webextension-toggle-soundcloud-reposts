@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Toggle SoundCloud Reposts",
+  "description": "Toggle hide or show all repost entries on your SoundCloud home timeline",
+  "version": "1.0",
+  "homepage_url": "https://github.com/polamjag/webextensions-toggle-soundcloud-reposts",
+  "icons": {
+    "48": "icons/48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://soundcloud.com/stream"],
+      "js": ["app.js"]
+    }
+  ]
+}
