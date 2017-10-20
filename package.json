@@ -1,5 +1,5 @@
 {
-  "name": "webextension-remove-soundcloud-reposts",
+  "name": "webextension-toggle-soundcloud-reposts",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
