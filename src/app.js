@@ -1,3 +1,5 @@
+const trackListTimelineSelector = '.stream .lazyLoadingList__list';
+
 const hideAllRepostEntries = () => {
   [...document.querySelectorAll('.stream .sc-ministats-reposts')].forEach(
     el => {
@@ -47,22 +49,29 @@ toggleButton.addEventListener('click', (ev) => {
   }
 });
 
-document.querySelector('.streamExploreTabs').style.position = 'relative';
-document.querySelector('.streamExploreTabs').appendChild(toggleButton);
+const initToggleExtension = () => {
+  document.querySelector('.streamExploreTabs').style.position = 'relative';
+  document.querySelector('.streamExploreTabs').appendChild(toggleButton);
 
-const observer = new MutationObserver((mutations) => {
-  if (toggleButton.innerText === toggleButtonText.show) {
-    hideAllRepostEntries();
-  }
-});
-const tracksListElement = document.querySelector('.stream .lazyLoadingList__list');
+  const observer = new MutationObserver((mutations) => {
+    if (toggleButton.innerText === toggleButtonText.show) {
+      hideAllRepostEntries();
+    }
+  });
 
-observer.observe(
-  tracksListElement, {
-    attributes: false,
-    childList: true,
-    characterData: false
-  }
-);
+  observer.observe(
+    document.querySelector(trackListTimelineSelector), {
+      attributes: false,
+      childList: true,
+      characterData: false
+    }
+  );
+  hideAllRepostEntries();
+};
 
-hideAllRepostEntries();
+if (document.querySelector(trackListTimelineSelector)) {
+  initToggleExtension();
+}
+else {
+  window.addEventListener('load', initToggleExtension);
+}
