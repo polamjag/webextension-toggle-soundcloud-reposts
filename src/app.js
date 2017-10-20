@@ -15,21 +15,6 @@ const showAllTrackEntries = () => {
   );
 };
 
-const observer = new MutationObserver((mutations) => {
-  hideAllRepostEntries();
-});
-const tracksListElement = document.querySelector('.stream .lazyLoadingList__list');
-
-observer.observe(
-  tracksListElement, {
-    attributes: false,
-    childList: true,
-    characterData: false
-  }
-);
-
-hideAllRepostEntries();
-
 const toggleButton = document.createElement('button');
 const toggleButtonText = {
   show: '🔁 Show Reposts',
@@ -64,3 +49,20 @@ toggleButton.addEventListener('click', (ev) => {
 
 document.querySelector('.streamExploreTabs').style.position = 'relative';
 document.querySelector('.streamExploreTabs').appendChild(toggleButton);
+
+const observer = new MutationObserver((mutations) => {
+  if (toggleButton.innerText === toggleButtonText.show) {
+    hideAllRepostEntries();
+  }
+});
+const tracksListElement = document.querySelector('.stream .lazyLoadingList__list');
+
+observer.observe(
+  tracksListElement, {
+    attributes: false,
+    childList: true,
+    characterData: false
+  }
+);
+
+hideAllRepostEntries();
