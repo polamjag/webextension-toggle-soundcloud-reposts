@@ -50,8 +50,8 @@ toggleButton.addEventListener('click', (ev) => {
 });
 
 const initToggleExtension = () => {
-  document.querySelector('.streamExploreTabs').style.position = 'relative';
-  document.querySelector('.streamExploreTabs').appendChild(toggleButton);
+  document.querySelector('.stream__header').style.position = 'relative';
+  document.querySelector('.stream__header').appendChild(toggleButton);
 
   const observer = new MutationObserver((mutations) => {
     if (toggleButton.innerText === toggleButtonText.show) {
