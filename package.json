@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "eslint": "^4.9.0"
+    "eslint": "^5.10.0"
   }
 }
